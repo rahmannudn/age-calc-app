@@ -4,7 +4,6 @@ const yearsInput = document.querySelector(".input-years");
 const yearsResultLabel = document.querySelector(".years-result");
 const monthsResultLabel = document.querySelector(".months-result");
 const daysResultLabel = document.querySelector(".days-result");
-const btnSubmit = document.querySelector(".btn-submit");
 const form = document.querySelector(".card");
 let anyError = false;
 
