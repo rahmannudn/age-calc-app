@@ -150,6 +150,12 @@ form.addEventListener("submit", function (e) {
   removeErrorStyle("years");
   anyError = false;
 
+  if (!isADateExist(day, month, year)) {
+    addErrorStyle("years");
+    addErrorStyle("months");
+    addErrorStyle("days", "Must be a valid date");
+  }
+
   // invalid error
   if (!isAValidYear(year)) addErrorStyle("years", "Must be in the past");
   if (!isAValidMonth(month)) addErrorStyle("months", "Must be a valid month");
@@ -160,17 +166,7 @@ form.addEventListener("submit", function (e) {
   if (isInputEmpty(month)) addErrorStyle("months", "This Field is Required");
   if (isInputEmpty(day)) addErrorStyle("days", "This Field is Required");
 
-  if (!isADateExist(day, month, year)) {
-    addErrorStyle("years");
-    addErrorStyle("months");
-    addErrorStyle("days", "Must be a valid date");
-  }
-
-  const calcYears = function (start) {
-    return new Date().getFullYear() - start;
-  };
-
-  // calculating process
+  // calculate process when no error
   if (!anyError) {
     const start = new Date(`${year}-${month}-${day}`);
     const now = new Date();
